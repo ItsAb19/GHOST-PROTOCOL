@@ -4,11 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-<<<<<<< HEAD
   productGUID: 5127b62bbba223b43b03ef6c0bfc0305
-=======
-  productGUID: 21d32c5647ea0fb4c89cbff9d1bf143e
->>>>>>> 5349afe563b5aa46d8fc4adb535d8beb2f3f27ce
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -953,7 +949,7 @@ PlayerSettings:
   cloudProjectId: 42c705f5-c7d2-4313-8afb-bb6a73090031
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: GHOST PROTOCOL
+  projectName: HorrorHouse
   organizationId: itzab19
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
