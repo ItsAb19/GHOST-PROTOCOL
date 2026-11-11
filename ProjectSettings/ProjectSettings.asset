@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 00000000000000000000000000000000
+  productGUID: 21d32c5647ea0fb4c89cbff9d1bf143e
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -831,7 +831,8 @@ PlayerSettings:
   webGLWebAssemblyBigInt: 0
   webGLCloseOnQuit: 0
   webWasm2023: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Standalone: SENTIS_ANALYTICS_ENABLED
   additionalCompilerArguments:
     Standalone: []
   platformArchitecture: {}
@@ -948,7 +949,7 @@ PlayerSettings:
   cloudProjectId: 42c705f5-c7d2-4313-8afb-bb6a73090031
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: HorrorHouse
+  projectName: GHOST PROTOCOL
   organizationId: itzab19
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
