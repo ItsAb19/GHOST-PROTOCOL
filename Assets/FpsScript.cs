@@ -5,12 +5,14 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField, Min(0f)] private float moveSpeed = 4f;
+    [SerializeField, Min(1f)] private float sprintMultiplier = 1.75f;
     [SerializeField, Min(0f)] private float lookSpeed = 150f;
 
     private CharacterController controller;
     private Camera playerCamera;
     private float pitch;
     private float verticalSpeed;
+    private bool isSprinting;
 
     private void Awake()
     {
@@ -27,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
         pitch = Mathf.DeltaAngle(0f, playerCamera.transform.localEulerAngles.x);
     }
 
+    private void OnDisable()
+    {
+        isSprinting = false;
+    }
+
     private void Update()
     {
         Gamepad pad = Gamepad.current;
@@ -36,9 +43,20 @@ public class PlayerMovement : MonoBehaviour
         {
             Look(pad.rightStick.ReadValue());
             moveInput = pad.leftStick.ReadValue();
+            if (pad.leftStickButton.wasPressedThisFrame)
+            {
+                isSprinting = true;
+            }
         }
 
-        Move(moveInput);
+        // The Input System reports zero when the stick is inside its centre dead zone.
+        if (moveInput.sqrMagnitude == 0f)
+        {
+            isSprinting = false;
+        }
+
+        float speed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
+        Move(moveInput, speed);
     }
 
     private void Look(Vector2 stick)
@@ -50,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         playerCamera.transform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
     }
 
-    private void Move(Vector2 stick)
+    private void Move(Vector2 stick, float speed)
     {
         stick = Vector2.ClampMagnitude(stick, 1f);
         Vector3 direction = transform.right * stick.x + transform.forward * stick.y;
@@ -61,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         verticalSpeed += Physics.gravity.y * Time.deltaTime;
-        Vector3 velocity = direction * moveSpeed + Vector3.up * verticalSpeed;
+        Vector3 velocity = direction * speed + Vector3.up * verticalSpeed;
         controller.Move(velocity * Time.deltaTime);
     }
 }
