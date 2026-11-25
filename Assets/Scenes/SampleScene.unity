@@ -460,7 +460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  lookSpeed: 150
+  sprintMultiplier: 1.75
+  lookSpeed: 300
 --- !u!136 &894092596
 CapsuleCollider:
   m_ObjectHideFlags: 0
